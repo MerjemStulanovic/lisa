@@ -1,0 +1,47 @@
+class pd {
+    trivial0() {
+        def x = 5;
+        x = x * 2;
+
+        return x;
+    }
+
+    // Test that the reduction (0+, O) -> (+, O) works correctly.
+    f0() {
+        def x = 5;
+        def y = 6;
+        def z = x % y;
+        def w = z * 2 + 1;
+    }
+
+    // Test that the reduction from (Bot, Top) -> (Bot, Bot) works correctly.
+    f1() {
+        def x = 5;
+        def y = 0;
+
+        def z = x / y;
+    }
+
+    // Test that the widening works correctly and determines both the sign and the parity of y, (+, E).
+    f2() {
+        def x = 5;
+        def y = 1;
+
+        while (x > 0) {
+            y = y * 2;
+            x = x - 1;
+        }
+    }
+
+    f3() {
+        def in = this.f2(); // in is (Top, Top), effectively simulating user input.
+        def odd = in * 2 + 1; // odd is guaranteed to be odd.
+        def y = 2; // y is guaranteed to be even.
+
+        if (odd == 0) {
+            y = 3; // This will never be executed.
+        }
+
+        // At the end, the system should recognize that y is even.
+    }
+}

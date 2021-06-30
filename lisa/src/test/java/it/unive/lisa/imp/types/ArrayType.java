@@ -2,11 +2,12 @@ package it.unive.lisa.imp.types;
 
 import it.unive.lisa.type.Type;
 import it.unive.lisa.type.Untyped;
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * A type representing an IMP array defined in an IMP program. ArrayTypes are
@@ -86,7 +87,7 @@ public class ArrayType implements it.unive.lisa.type.ArrayType {
 
 	@Override
 	public String toString() {
-		return base + "[]".repeat(dimensions);
+		return base + "[]";
 	}
 
 	@Override

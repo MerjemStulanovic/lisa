@@ -5,11 +5,11 @@ import it.unive.lisa.analysis.SemanticExceptionWrapper;
 import it.unive.lisa.symbolic.SymbolicExpression;
 import it.unive.lisa.symbolic.value.Identifier;
 import it.unive.lisa.util.collections.CollectionUtilities;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -111,9 +111,10 @@ public class ExpressionSet<T extends SymbolicExpression> extends SetLattice<Expr
 		Set<T> lub = new HashSet<>();
 
 		// all non-identifiers expressions are part of the lub
-		elements.stream().filter(Predicate.not(Identifier.class::isInstance)).forEach(lub::add);
+		//elements.stream().filter(Predicate.not(Identifier.class::isInstance)).forEach(lub::add);
+
 		// common ones will be overwritten
-		other.elements.stream().filter(Predicate.not(Identifier.class::isInstance)).forEach(lub::add);
+		//other.elements.stream().filter(Predicate.not(Identifier.class::isInstance)).forEach(lub::add);
 
 		// identifiers are added after lubbing the ones with the same name
 		Set<Identifier> idlub = new HashSet<>();
